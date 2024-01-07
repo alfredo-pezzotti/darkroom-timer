@@ -1,3 +1,3 @@
 #!/bin/bash
 
-avr-gdb -ex 'target remote :1234' blinky
+avr-gdb -ex 'target remote :1234' build/blinky

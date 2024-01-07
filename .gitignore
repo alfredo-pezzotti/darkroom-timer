@@ -1,0 +1,7 @@
+
+
+# ignores all produced binaries:
+build/
+
+# ignores all object files:
+*.o

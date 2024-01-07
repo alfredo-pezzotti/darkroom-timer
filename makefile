@@ -6,4 +6,4 @@ LDLIBS=
 CC=avr-gcc
 
 $(P): $(OBJECTS)
-	$(CC) $(CFLAGS) $(LDLIBS) -o $(P) $(OBJECTS)
+	$(CC) $(CFLAGS) $(LDLIBS) -o build/$(P) $(OBJECTS)
