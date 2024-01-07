@@ -5,3 +5,6 @@ build/*
 
 # ignores all object files:
 *.o
+
+# ignores tag files:
+src/tags
