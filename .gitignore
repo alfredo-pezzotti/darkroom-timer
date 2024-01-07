@@ -1,7 +1,7 @@
 
 
 # ignores all produced binaries:
-build/
+build/*
 
 # ignores all object files:
 *.o
