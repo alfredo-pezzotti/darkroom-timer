@@ -5,5 +5,8 @@ code for an ATMEGA328-powered darkroom timer
 Just run
     make
 
+To compile the default target for ATMEGA328P.
+
 In order to run this on qEmu's emulator:
-    make -DMOCK
+    make blinky_SIM
+
