@@ -16,11 +16,19 @@
     #define SHR_PORT PORTC
 #endif
 
-void main(void)
+void setup_MCU(void)
 {
     // Pinout setup:
-    DDRB |= 1 << LED_PIN;
-    //DDRC |=
+    DDRB |= OUTPUT_PIN << LED_PIN;
+    // shift register communication port:
+    DDRC |= OUTPUT_PIN << PC_SHR_CLR    | OUTPUT_PIN << PC_SHR_CLK |
+            OUTPUT_PIN << PC_SHR_STRCLK | OUTPUT_PIN << PC_SHR_OUTENABLE |
+            OUTPUT_PIN << PC_SHR_DATA;
+}
+
+void main(void)
+{
+    setup_MCU();
 
     while (EXECUTE_FOREVER)
     {
