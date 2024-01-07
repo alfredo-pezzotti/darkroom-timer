@@ -7,6 +7,7 @@
 #define PC_SHR_STRCLK           2u
 #define PC_SHR_OUTENABLE        3u
 #define PC_SHR_DATA             4u
+#define PC_UNASSIGNED_6         5u
 
 #define EXECUTE_FOREVER         0xA5
 #define INPUT_PIN               0
