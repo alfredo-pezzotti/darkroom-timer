@@ -29,11 +29,27 @@ FUSES =
 #endif
 
 
-void setup_MCU(void)
+void setup_MCU_init(void)
 {
-    // Pinout setup:
+    // PERIPHERALS SETUP
+
+    // Watch Dog Timer flag is cleared:
+    MCUSR &= ~(1 << WDRF);
+
+    // Keeps old prescaler setting to prevent unintentional time-out (code
+    // taken from atmega328P's datasheet, sect. 8.8.2):
+    WDTCSR |= (1<<WDCE) | (1<<WDE);
+
+    // finally, turns off the WDT:
+    WDTCSR = 0x00;
+
+
+    // PINOUT SETUP
+
+    // portB
     DDRB |= OUTPUT_PIN << LED_PIN;
-    // shift register communication port:
+
+    // shift register communication portC:
     DDRC  = OUTPUT_PIN << PC_SHR_CLR    | OUTPUT_PIN << PC_SHR_CLK       |
             OUTPUT_PIN << PC_SHR_STRCLK | OUTPUT_PIN << PC_SHR_OUTENABLE |
             OUTPUT_PIN << PC_SHR_DATA   | INPUT_PIN  << PC_UNASSIGNED_6;
@@ -44,7 +60,7 @@ void setup_MCU(void)
 
 void main(void)
 {
-    setup_MCU();
+    setup_MCU_init();
 
     while (EXECUTE_FOREVER)
     {
