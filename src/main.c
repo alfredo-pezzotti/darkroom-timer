@@ -19,7 +19,7 @@
 void setup_MCU(void)
 {
     // setting up chip FUSEs:
-    //TODO
+    //TODO: please see sect. 23.15 of avr-libc manual!
 
     // Pinout setup:
     DDRB |= OUTPUT_PIN << LED_PIN;
