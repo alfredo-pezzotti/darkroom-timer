@@ -11,3 +11,6 @@ $(P): $(OBJECTS)
 
 $(P_SIM): $(OBJECTS)
 	$(CC) $(CFLAGS) $(MOCKFLAG) $(LDLIBS) -o build/$(P_SIM) $(OBJECTS)
+
+clean: $(OBJECTS)
+	rm src/*.o build/$(P) build/$(P_SIM)
