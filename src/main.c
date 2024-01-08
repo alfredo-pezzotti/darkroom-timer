@@ -47,6 +47,9 @@ void setup_MCU_init(void)
     // (cfr. sect. 7.11.1 of the ATMEGA328P's datasheet):
     SMCR = 0x00u;
 
+    // Power reduction register settings - turns off USART0 and ADC:
+    PRR = (1 << PRUSART0) | (1 << PRADC);
+
 
     // PINOUT SETUP
 
