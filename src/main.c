@@ -38,10 +38,14 @@ void setup_MCU_init(void)
 
     // Keeps old prescaler setting to prevent unintentional time-out (code
     // taken from atmega328P's datasheet, sect. 8.8.2):
-    WDTCSR |= (1<<WDCE) | (1<<WDE);
+    WDTCSR |= (1 << WDCE) | ( 1<< WDE);
 
     // finally, turns off the WDT:
-    WDTCSR = 0x00;
+    WDTCSR = 0x00u;
+
+    // disables sleep mode by setting SE bit to 0 (along with everything else)
+    // (cfr. sect. 7.11.1 of the ATMEGA328P's datasheet):
+    SMCR = 0x00u;
 
 
     // PINOUT SETUP
