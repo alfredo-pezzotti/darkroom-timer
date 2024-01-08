@@ -14,13 +14,20 @@
 #else
     # define LED_PORT PORTB
     #define SHR_PORT PORTC
+
+// setting up chip FUSEs:
+//TODO: please see sect. 23.15 of avr-libc manual!
+FUSES =
+{
+    .low = (FUSE_SUT1 & FUSE_CKSEL3 & FUSE_CKSEL2 & FUSE_CKSEL1 & FUSE_CKSEL0),
+    .high = (FUSE_BOOTSZ0 & FUSE_BOOTSZ1 & FUSE_EESAVE & FUSE_SPIEN & FUSE_JTAGEN),
+    .extended = EFUSE_DEFAULT,
+};
 #endif
+
 
 void setup_MCU(void)
 {
-    // setting up chip FUSEs:
-    //TODO: please see sect. 23.15 of avr-libc manual!
-
     // Pinout setup:
     DDRB |= OUTPUT_PIN << LED_PIN;
     // shift register communication port:
