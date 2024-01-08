@@ -18,6 +18,9 @@
 
 void setup_MCU(void)
 {
+    // setting up chip FUSEs:
+    //TODO
+
     // Pinout setup:
     DDRB |= OUTPUT_PIN << LED_PIN;
     // shift register communication port:
