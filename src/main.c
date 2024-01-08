@@ -16,12 +16,15 @@
     #define SHR_PORT PORTC
 
 // setting up chip FUSEs:
-//TODO: please see sect. 23.15 of avr-libc manual!
+//TODO: please see sect. 23.15 of avr-libc manual or sect 25.2 of datasheet!
 FUSES =
 {
-    .low = (FUSE_SUT1 & FUSE_CKSEL3 & FUSE_CKSEL2 & FUSE_CKSEL1 & FUSE_CKSEL0),
-    .high = (FUSE_BOOTSZ0 & FUSE_BOOTSZ1 & FUSE_EESAVE & FUSE_SPIEN & FUSE_JTAGEN),
-    .extended = EFUSE_DEFAULT,
+    .low =  (FUSE_SUT1    & FUSE_CKSEL3  & FUSE_CKSEL2 & FUSE_CKSEL1 \
+                          & FUSE_CKSEL0),
+    .high = (FUSE_BOOTSZ0 & FUSE_BOOTSZ1 & FUSE_EESAVE & FUSE_SPIEN  \
+                          & FUSE_RSTDISBL),
+    // disables Brown-Out Detector:
+    .extended = (FUSE_BODLEVEL2 & FUSE_BODLEVEL1 & FUSE_BODLEVEL0),
 };
 #endif
 
