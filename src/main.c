@@ -63,6 +63,10 @@ void setup_MCU_init(void)
 
     // initialises PORTC to low outputs while setting PC6 to Hi-Z:
     PORTC = 0 << PC_UNASSIGNED_6;
+
+
+    // Finally, enables the interrupt modules:
+    SREG |= (1 << SREG_I);
 }
 
 void main(void)
