@@ -21,7 +21,7 @@ FUSES =
 {
     .low =  (FUSE_SUT1    & FUSE_CKSEL3  & FUSE_CKSEL2 & FUSE_CKSEL1 \
                           & FUSE_CKSEL0),
-    .high = (FUSE_BOOTSZ0 & FUSE_BOOTSZ1 & FUSE_EESAVE & FUSE_SPIEN  \
+    .high = (FUSE_BOOTSZ1 & FUSE_BOOTSZ0 & FUSE_EESAVE & FUSE_SPIEN  \
                           & FUSE_RSTDISBL),
     // disables Brown-Out Detector:
     .extended = (FUSE_BODLEVEL2 & FUSE_BODLEVEL1 & FUSE_BODLEVEL0),
@@ -49,6 +49,9 @@ void setup_MCU_init(void)
 
     // Power reduction register settings - turns off USART0 and ADC:
     PRR = (1 << PRUSART0) | (1 << PRADC);
+
+    // Turns off the ADC:
+    ADCSRA &= (0 << ADEN);
 
 
     // PINOUT SETUP
