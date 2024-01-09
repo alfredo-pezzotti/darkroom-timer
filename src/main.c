@@ -51,7 +51,7 @@ void setup_MCU_init(void)
     PRR = (1 << PRUSART0) | (1 << PRADC);
 
     // Turns off the ADC:
-    ADCSRA &= (0 << ADEN);
+    ADCSRA = 0;
 
 
     // PINOUT SETUP

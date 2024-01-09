@@ -8,3 +8,6 @@ build/*
 
 # ignores tag files:
 src/tags
+
+# ignores vim artifacts:
+*.swp
