@@ -24,6 +24,11 @@ void HAL_mcuSetup_init(void)
     // disables pin change interrupts:
     PCICR &= ~((1 << PCIE2) | (1 << PCIE1) | (1 << PCIE0));
 
+    // disables the corresponding pin masks:
+    PCMSK2 = 0;
+    PCMSK1 = 0;
+    PCMSK0 = 0;
+
     // Watch Dog Timer flag is cleared:
     MCUSR &= ~(1 << WDRF);
 
