@@ -9,6 +9,18 @@ void HAL_mcuSetup_init(void)
 {
     // PERIPHERALS SETUP
 
+    // disables all of the interrupt modules:
+    SREG &= ~(1 << SREG_I);
+
+    // enables IVSEL writing (sect. 9.5.2 of datasheet):
+    MCUCR |= (1 << IVCE);
+
+    // sets interrupt vectors to beginning of flash section:
+    MCUCR &= ~(1 << IVSEL);
+
+    // disables external interrupts:
+    EIMSK &= ~((1 << INT1) | (1 << INT0))
+
     // Watch Dog Timer flag is cleared:
     MCUSR &= ~(1 << WDRF);
 
