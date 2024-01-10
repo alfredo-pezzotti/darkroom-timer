@@ -13,4 +13,4 @@ $(P_SIM): $(OBJECTS)
 	$(CC) $(CFLAGS) $(MOCKFLAG) $(LDLIBS) -o build/$(P_SIM) $(OBJECTS)
 
 clean: $(OBJECTS)
-	rm src/*.o src/hal/*.o build/$(P) build/$(P_SIM)
+	rm src/*.o src/hal/*.o build/$(P) build/$(P_SIM) 2> /dev/null || true
