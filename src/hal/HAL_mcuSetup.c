@@ -19,7 +19,10 @@ void HAL_mcuSetup_init(void)
     MCUCR &= ~(1 << IVSEL);
 
     // disables external interrupts:
-    EIMSK &= ~((1 << INT1) | (1 << INT0))
+    EIMSK &= ~((1 << INT1) | (1 << INT0));
+
+    // disables pin change interrupts:
+    PCICR &= ~((1 << PCIE2) | (1 << PCIE1) | (1 << PCIE0));
 
     // Watch Dog Timer flag is cleared:
     MCUSR &= ~(1 << WDRF);
