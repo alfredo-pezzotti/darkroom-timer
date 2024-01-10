@@ -4,7 +4,6 @@
 #include <avr/io.h>
 #include <util/delay.h>
 
-#define LED_PIN (2)
 
 #ifdef MOCK
     int     mock_portb;

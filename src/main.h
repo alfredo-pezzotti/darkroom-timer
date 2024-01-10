@@ -1,7 +1,11 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+
+
 // PIN offsets:
+#define LED_PIN (2)
+
 #define PC_SHR_CLR              0u
 #define PC_SHR_CLK              1u
 #define PC_SHR_STRCLK           2u
