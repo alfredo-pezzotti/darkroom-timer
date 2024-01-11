@@ -66,7 +66,7 @@ void HAL_mcuSetup_init(void)
     // shift register communication portC:
     DDRC = OUTPUT_PIN << PC_SHR_CLR    | OUTPUT_PIN << PC_SHR_CLK       |
            OUTPUT_PIN << PC_SHR_STRCLK | OUTPUT_PIN << PC_SHR_OUTENABLE |
-           OUTPUT_PIN << PC_SHR_DATA   | INPUT_PIN  << PC_UNASSIGNED_5  |
+           OUTPUT_PIN << PC_SHR_DATA   | OUTPUT_PIN << PC_BUZ_ENABLE    |
            INPUT_PIN  << PC_UNASSIGNED_6;
 
     // initialises PORTC to low outputs while setting PC5 and PC6 to Hi-Z:
