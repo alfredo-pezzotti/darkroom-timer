@@ -53,7 +53,15 @@ void HAL_mcuSetup_init(void)
     // PINOUT SETUP
 
     // portB
-    DDRB = 0;//OUTPUT_PIN << LED_PIN;
+    DDRB = OUTPUT_PIN << PB_LED_MODE   | INPUT_PIN << PB_BTN_PLAY |
+           INPUT_PIN  << PB_BTN_STOP   | INPUT_PIN << PB_BTN_FOOT |
+           INPUT_PIN  << PB_BTN_NEXT   | INPUT_PIN << PB_BTN_PREV;
+
+    // disables pull up resistors for input pins:
+    PORTB &= ~((1 << PB_BTN_PLAY) | (1 << PB_BTN_STOP) | (1 << PB_BTN_FOOT) |
+               (1 << PB_BTN_NEXT) | (1 << PB_BTN_PREV));
+    //TODO: PB_LED_MODE should be initialized with the value retrieved from
+    //      EEPROM!
 
     // shift register communication portC:
     DDRC = OUTPUT_PIN << PC_SHR_CLR    | OUTPUT_PIN << PC_SHR_CLK       |
