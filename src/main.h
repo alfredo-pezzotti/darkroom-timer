@@ -7,8 +7,8 @@
 #define LED_PIN (2)
 
 #define PB_LED_MODE             0u
-#define PB_BTN_PLAY             1u
-#define PB_BTN_FOOT             2u
+#define PB_BTN_FOOT             1u
+#define PB_BTN_PLAY             2u
 #define PB_BTN_STOP             3u
 #define PB_BTN_NEXT             4u
 #define PB_BTN_PREV             5u
