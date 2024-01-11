@@ -53,12 +53,12 @@ void HAL_mcuSetup_init(void)
     // PINOUT SETUP
 
     // portB
-    DDRB |= OUTPUT_PIN << LED_PIN;
+    DDRB = 0;//OUTPUT_PIN << LED_PIN;
 
     // shift register communication portC:
-    DDRC  = OUTPUT_PIN << PC_SHR_CLR    | OUTPUT_PIN << PC_SHR_CLK       |
-            OUTPUT_PIN << PC_SHR_STRCLK | OUTPUT_PIN << PC_SHR_OUTENABLE |
-            OUTPUT_PIN << PC_SHR_DATA   | INPUT_PIN  << PC_UNASSIGNED_6;
+    DDRC = OUTPUT_PIN << PC_SHR_CLR    | OUTPUT_PIN << PC_SHR_CLK       |
+           OUTPUT_PIN << PC_SHR_STRCLK | OUTPUT_PIN << PC_SHR_OUTENABLE |
+           OUTPUT_PIN << PC_SHR_DATA   | INPUT_PIN  << PC_UNASSIGNED_6;
 
     // initialises PORTC to low outputs while setting PC6 to Hi-Z:
     PORTC = 0 << PC_UNASSIGNED_6;
