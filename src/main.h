@@ -18,7 +18,8 @@
 #define PC_SHR_STRCLK           2u
 #define PC_SHR_OUTENABLE        3u
 #define PC_SHR_DATA             4u
-#define PC_UNASSIGNED_6         5u
+#define PC_UNASSIGNED_5         5u
+#define PC_UNASSIGNED_6         6u
 
 #define PD_BTN_INCMIN           0u
 #define PD_BTN_DECMIN           1u
