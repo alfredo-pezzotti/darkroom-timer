@@ -80,6 +80,9 @@ void HAL_mcuSetup_init(void)
     // disables all pull ups, plus initializes the relay pin as OFF:
     PORTD = 0;
 
+    // disables Timer0 interrupts:
+    TIMSK0 &= ~(1 << TOIE0);
+
 
     // Finally, enables the interrupt modules:
     SREG |= (1 << SREG_I);
