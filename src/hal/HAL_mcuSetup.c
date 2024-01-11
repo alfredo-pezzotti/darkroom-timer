@@ -53,12 +53,12 @@ void HAL_mcuSetup_init(void)
     // PINOUT SETUP
 
     // portB
-    DDRB = OUTPUT_PIN << PB_LED_MODE   | INPUT_PIN << PB_BTN_PLAY |
-           INPUT_PIN  << PB_BTN_STOP   | INPUT_PIN << PB_BTN_FOOT |
-           INPUT_PIN  << PB_BTN_NEXT   | INPUT_PIN << PB_BTN_PREV;
+    DDRB = OUTPUT_PIN << PB_LED_MODE   | INPUT_PIN << PB_BTN_PLAY   |
+           INPUT_PIN  << PB_BTN_STOP   | INPUT_PIN << PB_BTN_PREV   |
+           INPUT_PIN  << PB_BTN_NEXT   | OUTPUT_PIN << PB_PWM_BUZZER;
 
     // disables pull up resistors for input pins:
-    PORTB &= ~((1 << PB_BTN_PLAY) | (1 << PB_BTN_STOP) | (1 << PB_BTN_FOOT) |
+    PORTB &= ~((1 << PB_BTN_PLAY) | (1 << PB_BTN_STOP) |
                (1 << PB_BTN_NEXT) | (1 << PB_BTN_PREV));
     //TODO: PB_LED_MODE should be initialized with the value retrieved from
     //      EEPROM!
@@ -75,7 +75,7 @@ void HAL_mcuSetup_init(void)
     DDRD = INPUT_PIN << PD_BTN_INCMIN  | INPUT_PIN << PD_BTN_DECMIN  |
            INPUT_PIN << PD_BTN_INCSEC  | INPUT_PIN << PD_BTN_DECSEC  |
            INPUT_PIN << PD_BTN_INCCENT | INPUT_PIN << PD_BTN_DECCENT |
-           OUTPUT_PIN << PD_PWM_BUZZER | OUTPUT_PIN << PD_OUT_RELAY;
+           INPUT_PIN << PD_BTN_FOOT    | OUTPUT_PIN << PD_OUT_RELAY;
 
     // disables all pull ups, plus initializes the relay pin as OFF:
     PORTD = 0;
