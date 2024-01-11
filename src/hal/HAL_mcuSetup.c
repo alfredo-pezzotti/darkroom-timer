@@ -71,6 +71,15 @@ void HAL_mcuSetup_init(void)
     // initialises PORTC to low outputs while setting PC6 to Hi-Z:
     PORTC = 0 << PC_UNASSIGNED_6;
 
+    // sets PORTD directions:
+    DDRD = INPUT_PIN << PD_BTN_INCMIN  | INPUT_PIN << PD_BTN_DECMIN  |
+           INPUT_PIN << PD_BTN_INCSEC  | INPUT_PIN << PD_BTN_DECSEC  |
+           INPUT_PIN << PD_BTN_INCCENT | INPUT_PIN << PD_BTN_DECCENT |
+           OUTPUT_PIN << PD_PWM_BUZZER | OUTPUT_PIN << PD_OUT_RELAY;
+
+    // disables all pull ups, plus initializes the relay pin as OFF:
+    PORTD = 0;
+
 
     // Finally, enables the interrupt modules:
     SREG |= (1 << SREG_I);
