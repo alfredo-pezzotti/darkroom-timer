@@ -8,7 +8,7 @@
 
 #define PB_LED_MODE             0u
 #define PB_BTN_PLAY             1u
-#define PB_PWM_BUZZER           2u
+#define PB_BTN_FOOT             2u
 #define PB_BTN_STOP             3u
 #define PB_BTN_NEXT             4u
 #define PB_BTN_PREV             5u
@@ -27,7 +27,7 @@
 #define PD_BTN_DECSEC           3u
 #define PD_BTN_INCCENT          4u
 #define PD_BTN_DECCENT          5u
-#define PD_BTN_FOOT             6u
+#define PD_PWM_BUZZER           6u
 #define PD_OUT_RELAY            7u
 
 #define EXECUTE_FOREVER         0xA5
