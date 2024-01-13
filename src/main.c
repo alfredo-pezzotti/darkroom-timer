@@ -33,6 +33,7 @@ void main(void)
 {
     HAL_mcuSetup_init();
 
+    // main microcontroller loop:
     while (EXECUTE_FOREVER)
     {
         LED_PORT ^= 1 << LED_PIN;
