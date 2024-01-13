@@ -77,9 +77,12 @@ void HAL_mcuSetup_init(void)
     // (Please note that this will require TCNT1 to be initialised to 40536u!):
     TCCR1B = (1 << CS11);
 
-    // enables Timer/Counter1 overflow interrupt - please cfr. sect. 10.3 of 
+    // enables Timer/Counter1 overflow interrupt - please cfr. sect. 10.3 of
     // avr-libc manual to correctly use the ISRs!
     TIMSK1 = (1 << TOIE1);
+
+    // deactivates Timer/Counter Synchronization mode:
+    GTCCR &= ~(1 << TSM);
 
 
     // PINOUT SETUP
