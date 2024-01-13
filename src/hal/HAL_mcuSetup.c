@@ -43,8 +43,8 @@ void HAL_mcuSetup_init(void)
     // (cfr. sect. 7.11.1 of the ATMEGA328P's datasheet):
     SMCR = 0x00u;
 
-    // Power reduction register settings - turns off USART0 and ADC:
-    PRR = (1 << PRUSART0) | (1 << PRADC);
+    // Power reduction register settings - turns off USART0, ADC and Timer2:
+    PRR = (1 << PRUSART0) | (1 << PRADC) | (1 << PRTIM2);
 
     // Turns off the ADC:
     ADCSRA &= (0 << ADEN);
@@ -115,9 +115,6 @@ void HAL_mcuSetup_init(void)
 
     // disables all pull ups, plus initializes the relay pin as OFF:
     PORTD = 0;
-
-    // disables Timer0 interrupts:
-    TIMSK0 &= ~(1 << TOIE0);
 
 
     // Finally, enables the interrupt modules:
