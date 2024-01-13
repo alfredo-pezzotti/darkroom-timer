@@ -49,6 +49,23 @@ void HAL_mcuSetup_init(void)
     // Turns off the ADC:
     ADCSRA &= (0 << ADEN);
 
+    // configures Timer/Counter 0 to toggle OC0A pin on compare match and
+    // sets the output mode to FAST PWM.
+    // In order to disconnect OC0A from the output pin (e.g.: to stop the PWM)
+    // we should clear COM0A0 bit (please cfr sect. 12.9.1 of datasheet):
+    TCCR0A = (1 << COM0A0) | (1 << WGM01) | (1 << WGM00);
+
+    // completes the FAST PWM setting and selects the clock source as the
+    // prescaler's CLK_IO/64 output:
+    TCCR0B = (1 << WGM02)  | (1 << CS01)  | (1 << CS00);
+
+    // sets the output compare A register to 0 to generate a 50% duty cycle
+    // fast PWM signal, as per sect. 12.7.3:
+    OCR0A = 0;
+
+    // disables all interrupts related to Timer/Counter0:
+    TIMSK0 = 0;
+
 
     // PINOUT SETUP
 
