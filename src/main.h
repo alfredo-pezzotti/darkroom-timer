@@ -40,4 +40,9 @@
 #define OUTPUT_PIN              1
 #define BUTTON_PRESSED          1
 
+#define DISPLAY_NUMBER          3
+#define DISPLAY_MINUTES         0
+#define DISPLAY_SECONDS         1
+#define DISPLAY_CENTS           2
+
 #endif
