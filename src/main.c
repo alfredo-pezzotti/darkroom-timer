@@ -41,6 +41,7 @@ void main(void)
         switch (TIMESET_PORT & PD_INPUT_MASK)
         {
             case (BUTTON_PRESSED << PD_BTN_INCMIN):
+                //TODO: add a DYNAMIC_BUTTON_HANDLER() function!
                 AL_timeSetting(PD_BTN_INCMIN);
                 break;
         }
