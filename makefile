@@ -1,7 +1,8 @@
 P=blinky
 P_SIM=blinky_SIM
 MOCKFLAG=-DMOCK
-OBJECTS=src/main.o src/hal/HAL_mcuSetup.o src/application/AL_TimeSet.o
+OBJECTS=src/main.o src/hal/HAL_mcuSetup.o src/application/AL_TimeSet.o \
+        src/util/buttons.o
 CFLAGS = -gdwarf-2 -g3 -DF_CPU=20000000UL -Os -mmcu=atmega328
 LDLIBS=
 CC=avr-gcc

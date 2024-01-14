@@ -37,13 +37,10 @@ void main(void)
     // main microcontroller loop:
     while (EXECUTE_FOREVER)
     {
-        // reads input from PORTD:
-        switch (TIMESET_PORT & PD_INPUT_MASK)
+        // reads input from PORTD, if any button is pressed, enters this if:
+        if (TIMESET_PORT & PD_INPUT_MASK)
         {
-            case (BUTTON_PRESSED << PD_BTN_INCMIN):
-                //TODO: add a DYNAMIC_BUTTON_HANDLER() function!
-                AL_timeSetting(PD_BTN_INCMIN);
-                break;
+            button_pressed(TIMESET_PORT & PD_INPUT_MASK);
         }
 
         LED_PORT ^= 1 << LED_PIN;
