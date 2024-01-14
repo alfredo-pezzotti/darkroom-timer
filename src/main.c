@@ -36,6 +36,14 @@ void main(void)
     // main microcontroller loop:
     while (EXECUTE_FOREVER)
     {
+        // reads input from PORTD:
+        switch (TIMESET_PORT & PD_INPUT_MASK)
+        {
+            case (BUTTON_PRESSED << PD_BTN_INCMIN):
+                AL_timeSetting(PD_BTN_INCMIN);
+                break;
+        }
+
         LED_PORT ^= 1 << LED_PIN;
         _delay_ms(1000);
     }
