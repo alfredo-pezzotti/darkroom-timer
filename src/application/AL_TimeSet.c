@@ -26,4 +26,6 @@ void AL_timeSetting(uint8_t pressedBtn)
     AL_TS_setTime = (AL_TS_currentTime[DISPLAY_MINUTES] * 6000) +
                     (AL_TS_currentTime[DISPLAY_SECONDS] * 100) +
                     (AL_TS_currentTime[DISPLAY_CENTS]);
+
+    // updates the display with the new set time:
 }

@@ -8,7 +8,9 @@ build/*
 
 # ignores tag files:
 src/tags
+src/application/tags
 src/hal/tags
+src/util/tags
 
 # ignores vim artifacts:
 *.swp
