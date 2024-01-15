@@ -22,6 +22,8 @@ uint8_t button_getPortStatus(uint8_t activePort)
 
 void button_pressed(uint8_t pressedBtn, uint8_t activePort)
 {
+    bool firstPress = true;
+
     // this loop goes on as long as the button is pressed:
     do
     {
@@ -36,7 +38,15 @@ void button_pressed(uint8_t pressedBtn, uint8_t activePort)
             }
         }
 
-        // reads again pressedBtn's status:
+        // reads again pressedBtn's status after 250ms, to see whether user is
+        // holding the button pressed:
+        if (firstPress)
+        {
+            _delay_ms(200);
+            firstPress = false;
+        }
+
+        _delay_ms(50);
         pressedBtn = button_getPortStatus(activePort);
     } while (pressedBtn);
 }
