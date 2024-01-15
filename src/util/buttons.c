@@ -40,6 +40,8 @@ void button_pressed(uint8_t pressedBtn, uint8_t activePort)
 
         // reads again pressedBtn's status after 250ms, to see whether user is
         // holding the button pressed:
+        //TODO: consider moving this to PORTD case, as the other buttons require
+        //      a different handling!
         if (firstPress)
         {
             _delay_ms(200);
