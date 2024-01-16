@@ -1,29 +1,29 @@
 # darkroom-timer
 
-<p>code for an ATMEGA328-powered darkroom timer</p>
+code for an ATMEGA328-powered darkroom timer
 
 # building
-<p>Just run<br>
+Just run<br>
 `    make`
 <br>
-To compile the default target for ATMEGA328P.</p>
+To compile the default target for ATMEGA328P.
 
-<p>In order to run this on qEmu's emulator:<br>
+In order to run this on qEmu's emulator:<br>
 `    make blinky_SIM`
 <br>
-</p>
+
 
 # Notes on implementation
 ## Timer prescaler:
-<p>If using a 20Mhz crystal:<br>
+If using a 20Mhz crystal:<br>
 `    XTAL_FREQ=20e6`
 
 And setting the prescaler to 64, the following computations holds (to compute
 the interrupt timeframe):<br>
 `    time_s = (Increments / (XTAL_FREQ / 64))`
 <br>
-</p>
-<p>In order to obtain a 1/100th of a second timeframe:<br>
+
+In order to obtain a 1/100th of a second timeframe:<br>
 `    Increments = 0.01 \* XTAL_FREQ / 64 = 3125`
 <br>
 So, Timer/Counter1 needs to be set to:<br>
@@ -36,4 +36,4 @@ Which, in fast PWM mode with simple OC0A pin inversion, will generate a 50%
 duty cycle square wave with frequency:<br>
 `    610 Hz`
 <br>
-</p>
+
