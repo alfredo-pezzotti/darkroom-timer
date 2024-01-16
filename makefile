@@ -4,7 +4,7 @@ MOCKFLAG=-DMOCK
 OBJECTS=src/main.o \
         src/hal/HAL_mcuSetup.o  \
         src/application/AL_TimeSet.o \
-        src/util/buttons.o
+        src/util/buttons.o src/util/7seg.o
 CFLAGS = -gdwarf-2 -g3 -DF_CPU=20000000UL -Os -mmcu=atmega328
 LDLIBS=
 CC=avr-gcc
