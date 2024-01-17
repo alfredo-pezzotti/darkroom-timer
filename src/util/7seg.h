@@ -33,6 +33,6 @@
 extern uint8_t UTIL_7SEG_displayedDigits[];
 
 // prototypes:
-uint8_t UTIL_7SEG_setDisplayDigits(const uint8_t* inputTimeDigits);
+void UTIL_7SEG_setDisplayDigits(const uint8_t* inputTimeDigits);
 
 #endif

@@ -39,9 +39,8 @@ static const uint8_t* UTIL_7SEG_mapperArray[] =
     UTIL_7SEG_straightDigits
 };
 
-uint8_t UTIL_7SEG_setDisplayDigits(const uint8_t* inputTimeDigits)
+void UTIL_7SEG_setDisplayDigits(const uint8_t* inputTimeDigits)
 {
-    uint8_t rc = UTIL_7SEG_RC_FAIL;
     uint8_t powerOf10_digits[DISPLAY_DIGITS_PER_VAL];
 
     for (char i = 0; i < DISPLAY_NUMBER; i++)
@@ -59,5 +58,4 @@ uint8_t UTIL_7SEG_setDisplayDigits(const uint8_t* inputTimeDigits)
                                UTIL_7SEG_mapperArray[j][(powerOf10_digits[j])];
         }
     }
-    return rc;
 }
