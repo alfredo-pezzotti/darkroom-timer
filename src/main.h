@@ -47,4 +47,7 @@
 #define DISPLAY_SECONDS         1
 #define DISPLAY_CENTS           2
 
+// generics:
+#define BYTE_BITS               8
+
 #endif
