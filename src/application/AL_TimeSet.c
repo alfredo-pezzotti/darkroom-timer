@@ -1,5 +1,6 @@
 
 #include "AL_TimeSet.h"
+#include "../util/7seg.h"
 #include "../main.h"
 
 
@@ -26,6 +27,9 @@ void AL_timeSetting(uint8_t pressedBtn)
     AL_TS_setTime = (AL_TS_currentTime[DISPLAY_MINUTES] * 6000) +
                     (AL_TS_currentTime[DISPLAY_SECONDS] * 100) +
                     (AL_TS_currentTime[DISPLAY_CENTS]);
+
+    // builds the display digits as per currently set time:
+    UTIL_7SEG_setDisplayDigits(AL_TS_currentTime);
 
     // updates the display with the new set time:
 }
