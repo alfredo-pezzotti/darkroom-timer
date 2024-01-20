@@ -16,11 +16,11 @@
 #define PB_BTN_PREV             5u
 
 #define SHIFTREG_PORT           PORTC
-#define PC_SHR_CLR              0u
-#define PC_SHR_CLK              1u
-#define PC_SHR_STRCLK           2u
-#define PC_SHR_OUTENABLE        3u
-#define PC_SHR_DATA             4u
+#define SHR_CLR                 0u
+#define SHR_CLK                 1u
+#define SHR_STRCLK              2u
+#define SHR_OUTENABLE           3u
+#define SHR_DATA                4u
 #define PC_UNASSIGNED_5         5u
 #define PC_UNASSIGNED_6         6u
 
@@ -49,5 +49,18 @@
 
 // generics:
 #define BYTE_BITS               8
+
+
+// exported variables:
+#ifdef MOCK
+    extern int     mock_portb;
+    extern uint8_t mock_portc;
+    #define LED_PORT            mock_portb
+    #define SHR_PORT            mock_portc
+#else
+    #define LED_PORT            PORTB
+    #define SHR_PORT            PORTC
+#endif
+ 
 
 #endif

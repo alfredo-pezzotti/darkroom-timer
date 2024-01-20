@@ -99,9 +99,9 @@ void HAL_mcuSetup_init(void)
     //      EEPROM!
 
     // shift register communication portC:
-    DDRC = OUTPUT_PIN << PC_SHR_CLR    | OUTPUT_PIN << PC_SHR_CLK       |
-           OUTPUT_PIN << PC_SHR_STRCLK | OUTPUT_PIN << PC_SHR_OUTENABLE |
-           OUTPUT_PIN << PC_SHR_DATA   | INPUT_PIN << PC_UNASSIGNED_5   |
+    DDRC = OUTPUT_PIN << SHR_CLR    | OUTPUT_PIN << SHR_CLK         |
+           OUTPUT_PIN << SHR_STRCLK | OUTPUT_PIN << SHR_OUTENABLE   |
+           OUTPUT_PIN << SHR_DATA   | INPUT_PIN << PC_UNASSIGNED_5  |
            INPUT_PIN  << PC_UNASSIGNED_6;
 
     // initialises PORTC to low outputs while setting PC5 and PC6 to Hi-Z:
