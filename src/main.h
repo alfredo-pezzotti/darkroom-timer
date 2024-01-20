@@ -39,6 +39,8 @@
 #define INPUT_PIN               0
 #define OUTPUT_PIN              1
 #define BUTTON_PRESSED          1
+#define OUT_HIGH                1
+#define OUT_LOW                 0
 
 #define DISPLAY_DIGITS          6
 #define DISPLAY_NUMBER          3
@@ -49,6 +51,7 @@
 
 // generics:
 #define BYTE_BITS               8
+#define MSb                     7
 
 
 // exported variables:

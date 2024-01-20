@@ -17,13 +17,15 @@ void HAL_SR_transmitDataToShiftRegisters(const uint8_t* txData,
 {
     for (int16_t digit = 0; digit < txDataLen; digit++)
     {
-        for (char i = 0; i < BYTE_BITS; i++)
+        for (int8_t i = MSb; i >= 0; i--)
         {
             // sets state and wait:
             //NOTES: - SER needs to be populated 25ns before SCLK (id est,
             //         2 instructions @ 20MHz).
             //       - If RCLK is tied together with SRCLK, then it runs one
             //         clock pulse behind the SRCLK.
+
+            TX_PORT = (txData[digit] & (1 << i)) << SER;
         }
     }
 }
