@@ -46,7 +46,7 @@ void UTIL_7SEG_setDisplayDigits(const uint8_t* inputTimeDigits)
     for (int8_t i = 0; i < DISPLAY_NUMBER; i++)
     {
         // gets the first power of 10 digit:
-        powerOf10_digits[0] = 
+        powerOf10_digits[0] =
                         (inputTimeDigits[i] - (inputTimeDigits[i] % 10)) / 10;
 
         // gets the unit:

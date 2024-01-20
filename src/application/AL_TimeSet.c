@@ -1,5 +1,6 @@
 
 #include "AL_TimeSet.h"
+#include "../hal/HAL_ShiftReg.h"
 #include "../util/7seg.h"
 #include "../main.h"
 
@@ -17,12 +18,12 @@ void AL_timeSetting(uint8_t pressedBtn)
     {
         case PD_BTN_INCMIN:
             // user is incrementing minutes by one unit:
-            AL_TS_currentTime[DISPLAY_MINUTES] = 
+            AL_TS_currentTime[DISPLAY_MINUTES] =
                 (AL_TS_currentTime[DISPLAY_MINUTES] + 1) % 60;
             break;
     }
 
-    // sets the new time, displacing each unit by its equivalent amount in 
+    // sets the new time, displacing each unit by its equivalent amount in
     // 1/100ths of a second:
     AL_TS_setTime = (AL_TS_currentTime[DISPLAY_MINUTES] * 6000) +
                     (AL_TS_currentTime[DISPLAY_SECONDS] * 100) +
@@ -32,4 +33,7 @@ void AL_timeSetting(uint8_t pressedBtn)
     UTIL_7SEG_setDisplayDigits(AL_TS_currentTime);
 
     // updates the display with the new set time:
+    HAL_SR_transmitDataToShiftRegisters(UTIL_7SEG_displayedDigits,
+                                        1);
+                                        //DISPLAY_DIGITS);
 }

@@ -64,6 +64,6 @@
     #define LED_PORT            PORTB
     #define SHR_PORT            PORTC
 #endif
- 
+
 
 #endif

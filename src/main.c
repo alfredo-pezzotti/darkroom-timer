@@ -30,6 +30,9 @@ void main(void)
 {
     HAL_mcuSetup_init();
 
+    // turns on the display:
+    SHR_PORT = (OUT_HIGH << SHR_CLR);
+
     // main microcontroller loop:
     while (EXECUTE_FOREVER)
     {
