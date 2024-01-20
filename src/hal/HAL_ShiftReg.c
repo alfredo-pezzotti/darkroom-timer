@@ -5,12 +5,12 @@
 
 // internal defines for ports (a trailing underscore indicates a complemented
 // signal!):
-#define TX_PORT                 SHR_PORT
-#define SRCLR_                  SHR_CLR
-#define SRCLK                   SHR_CLK
-#define RCLK                    SHR_STRCLK
-#define OUT_ENABLE_             SHR_OUTENABLE
-#define SER                     SHR_DATA
+#define TX_PORT                 SHR_PORT        // uC port assigned to ShiftReg
+#define SRCLR_                  SHR_CLR         // clears the SHR if pulled Low
+#define SRCLK                   SHR_CLK         // shift register clock
+#define RCLK                    SHR_STRCLK      // storage clock
+#define OUT_ENABLE_             SHR_OUTENABLE   // H: disable outputs, L: enable
+#define SER                     SHR_DATA        // input serial data
 
 void HAL_SR_transmitDataToShiftRegisters(const uint8_t* txData, 
                                          int16_t        txDataLen)
