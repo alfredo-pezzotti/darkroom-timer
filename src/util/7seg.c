@@ -54,6 +54,7 @@ void UTIL_7SEG_setDisplayDigits(const uint8_t* inputTimeDigits)
 
         for (char j = 0; j < DISPLAY_DIGITS_PER_VAL; j++)
         {
+            //TODO: dude, really, document this crap...
             UTIL_7SEG_displayedDigits[(i * DISPLAY_DIGITS_PER_VAL) + j] =
                                UTIL_7SEG_mapperArray[j][(powerOf10_digits[j])];
         }
