@@ -1,5 +1,5 @@
-P=blinky
-P_SIM=blinky_SIM
+P=darkroom-timer
+P_SIM=dtSIM
 MOCKFLAG=-DMOCK
 OBJECTS=src/main.o \
         src/hal/HAL_mcuSetup.o src/hal/HAL_ShiftReg.o\
