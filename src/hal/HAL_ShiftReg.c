@@ -38,6 +38,10 @@ void HAL_SR_transmitDataToShiftRegisters(const uint8_t* txData,
 
             // hold time for SER and SRCLK is 0, as per sect. 6.6 of SN74HC595's
             // datasheet, so we don't need to add a further delay here.
+
+            // pulls SRCLK low, so as to build a somewhat "proper" CLK source
+            // for the shift register (same applies to RCLK):
+            TX_PORT &= ~((OUT_HIGH << SRCLK) | (OUT_HIGH << RCLK));
         }
     }
 }
