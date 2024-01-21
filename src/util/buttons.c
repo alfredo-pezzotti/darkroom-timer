@@ -38,7 +38,7 @@ void button_pressed(uint8_t pressedBtn, uint8_t activePort)
                     break;
             }
 
-            // reads again pressedBtn's status after 250ms, to see whether 
+            // reads again pressedBtn's status after 250ms, to see whether
             // user is holding the button pressed:
             if (firstPress)
             {
