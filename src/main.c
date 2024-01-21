@@ -37,6 +37,7 @@ void main(void)
     while (EXECUTE_FOREVER)
     {
         // reads input from PORTD, if any button is pressed, enters this if:
+        //FIXME: WRONG! this circuit uses a LOW input as pressed button!
         if (TIMESET_PORT & PD_INPUT_MASK)
         {
             button_pressed(TIMESET_PORT & PD_INPUT_MASK, Buttons_PORTD);
