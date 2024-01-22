@@ -14,7 +14,7 @@ uint8_t button_getPortStatus(uint8_t activePort)
     switch (activePort)
     {
         case Buttons_PORTD:
-            portStatus = PIND & PD_INPUT_MASK;
+            portStatus = ~(PIND & PD_INPUT_MASK);
             break;
     }
 

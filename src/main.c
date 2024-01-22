@@ -36,11 +36,11 @@ void main(void)
     // main microcontroller loop:
     while (EXECUTE_FOREVER)
     {
-        // reads input from PORTD, if any button is pressed, enters this if:
-        //FIXME: WRONG! this circuit uses a LOW input as pressed button!
-        if (TIMESET_PORT & PD_INPUT_MASK)
+        // reads input from PORTD, if any button is pressed, enters this if
+        // (please remember that a pressed button is a LOW signal):
+        if (~(TIMESET_PORT & PD_INPUT_MASK))
         {
-            button_pressed(TIMESET_PORT & PD_INPUT_MASK, Buttons_PORTD);
+            button_pressed(~(TIMESET_PORT & PD_INPUT_MASK), Buttons_PORTD);
         }
 
         LED_PORT ^= 1 << LED_PIN;

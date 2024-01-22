@@ -38,7 +38,7 @@
 #define EXECUTE_FOREVER         0xA5
 #define INPUT_PIN               0
 #define OUTPUT_PIN              1
-#define BUTTON_PRESSED          1
+#define BUTTON_PRESSED          0
 #define OUT_HIGH                1
 #define OUT_LOW                 0
 
