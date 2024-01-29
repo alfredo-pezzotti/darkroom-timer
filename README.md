@@ -7,6 +7,14 @@ Just run<br>
 `    make`
 <br>
 To compile the default target for ATMEGA328P.
+<br>
+To clean the target (i.e.: to remove all build artifacts):<br>
+`   make clean`
+<br>
+
+To download the generated code to the chip:<br>
+`   make BURN`
+<br>
 
 In order to run this on qEmu's emulator:<br>
 `    make blinky_SIM`
