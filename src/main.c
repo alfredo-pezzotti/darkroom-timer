@@ -42,8 +42,5 @@ void main(void)
         {
             button_pressed(~(TIMESET_PORT & PD_INPUT_MASK), Buttons_PORTD);
         }
-
-        LED_PORT ^= 1 << LED_PIN;
-        _delay_ms(1000);
     }
 }

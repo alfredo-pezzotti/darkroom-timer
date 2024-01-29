@@ -35,5 +35,6 @@ void AL_timeSetting(uint8_t pressedBtn)
     // updates the display with the new set time:
     HAL_SR_transmitDataToShiftRegisters(UTIL_7SEG_displayedDigits,
                                         1);
+                                        //FIXME: reinstate this code for release
                                         //DISPLAY_DIGITS);
 }
