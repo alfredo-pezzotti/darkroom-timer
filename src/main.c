@@ -38,9 +38,9 @@ void main(void)
     {
         // reads input from PORTD, if any button is pressed, enters this if
         // (please remember that a pressed button is a LOW signal):
-        if (~(TIMESET_PORT & PD_INPUT_MASK))
+        if ((~TIMESET_PORT) & PD_INPUT_MASK)
         {
-            button_pressed(~(TIMESET_PORT & PD_INPUT_MASK), Buttons_PORTD);
+            button_pressed((~TIMESET_PORT) & PD_INPUT_MASK, Buttons_PORTD);
         }
     }
 }

@@ -79,7 +79,7 @@ void HAL_mcuSetup_init(void)
 
     // enables Timer/Counter1 overflow interrupt - please cfr. sect. 10.3 of
     // avr-libc manual to correctly use the ISRs!
-    TIMSK1 = (1 << TOIE1);
+    //TIMSK1 = (1 << TOIE1); we don't need this for the test!
 
     // deactivates Timer/Counter Synchronization mode:
     GTCCR &= ~(1 << TSM);

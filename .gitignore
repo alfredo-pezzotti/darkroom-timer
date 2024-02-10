@@ -2,6 +2,7 @@
 
 # ignores all produced binaries:
 build/*
+flashDump
 
 # ignores all object files:
 *.o
