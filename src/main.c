@@ -17,11 +17,12 @@
     FUSES =
     {
         .low =  (FUSE_SUT1    & FUSE_CKSEL3  & FUSE_CKSEL2 & FUSE_CKSEL1 \
-                              & FUSE_CKSEL0),
+                              & FUSE_CKSEL0),   // 0b00101111 = 0x2F
         .high = (FUSE_BOOTSZ1 & FUSE_BOOTSZ0 & FUSE_EESAVE & FUSE_SPIEN  \
-                              & FUSE_RSTDISBL),
+                              & FUSE_RSTDISBL), // 0b10101110 = 0xAE
         // disables Brown-Out Detector:
         .extended = (FUSE_BODLEVEL2 & FUSE_BODLEVEL1 & FUSE_BODLEVEL0),
+                                                // 0b00000111 = 0x07
     };
 #endif
 
@@ -33,6 +34,9 @@ void main(void)
     // turns on the display:
     SHR_PORT = (OUT_HIGH << SHR_CLR);
 
+    // DEBUG: turns off the debug pin:
+    DEBUG_PORT &= ~((OUT_LOW << DEBUG_PIN1) | (OUT_LOW << DEBUG_PIN2));
+
     // main microcontroller loop:
     while (EXECUTE_FOREVER)
     {
@@ -41,6 +45,11 @@ void main(void)
         if ((~TIMESET_PORT) & PD_INPUT_MASK)
         {
             button_pressed((~TIMESET_PORT) & PD_INPUT_MASK, Buttons_PORTD);
+        }
+        else
+        {
+            PORTB ^= (OUT_HIGH << DEBUG_PIN1);
+            _delay_ms(500);
         }
     }
 }

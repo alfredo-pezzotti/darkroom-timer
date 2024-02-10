@@ -38,7 +38,7 @@
 #define EXECUTE_FOREVER         0xA5
 #define INPUT_PIN               0
 #define OUTPUT_PIN              1
-#define BUTTON_PRESSED          0
+#define BUTTON_PRESSED          1
 #define OUT_HIGH                1
 #define OUT_LOW                 0
 
@@ -65,5 +65,9 @@
     #define SHR_PORT            PORTC
 #endif
 
+// DEBUG:
+#define DEBUG_PIN1              PB_LED_MODE
+#define DEBUG_PIN2              PD_OUT_RELAY
+#define DEBUG_PORT              TIMESET_PORT
 
 #endif

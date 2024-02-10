@@ -23,6 +23,7 @@ $(P_SIM): $(OBJECTS)
 $(P_FLASH):
 	avrdude -B 125khz -p $(TARGET_MCU) -P usb -c $(TARGET_PROGRAMMER) \
     -U flash:w:build/$(P):e -v -F
+    # -U efuse:w:0x07:m -U hfuse:w:0xae:m -U lfuse:w:0x2f:m
 
 clean: $(OBJECTS)
 	rm src/*.o src/application/*o src/hal/*.o src/util/*.o \
