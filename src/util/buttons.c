@@ -34,7 +34,7 @@ void button_pressed(uint8_t pressedBtn, uint8_t activePort)
             {
                 case (BUTTON_PRESSED << PD_BTN_INCMIN):
                     // this button requires times setting:
-                    DEBUG_PORT |= OUT_HIGH << DEBUG_PIN2;
+                    PORTD ^= OUT_HIGH << DEBUG_PIN2;
                     AL_timeSetting(PD_BTN_INCMIN);
                     break;
             }
