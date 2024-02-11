@@ -34,8 +34,10 @@ void main(void)
     // turns on the display:
     SHR_PORT = (OUT_HIGH << SHR_CLR);
 
+    #ifdef DEBUG_FLAG
     // DEBUG: turns off the debug pin:
-    DEBUG_PORT &= ~((OUT_LOW << DEBUG_PIN1) | (OUT_LOW << DEBUG_PIN2));
+    DEBUG_PORT &= ~((OUT_HIGH << DEBUG_PIN1) | (OUT_HIGH << DEBUG_PIN2));
+    #endif
 
     // main microcontroller loop:
     while (EXECUTE_FOREVER)
@@ -46,10 +48,12 @@ void main(void)
         {
             button_pressed((~TIMESET_PORT) & PD_INPUT_MASK, Buttons_PORTD);
         }
+        #ifdef DEBUG_FLAG
         else
         {
             PORTB ^= (OUT_HIGH << DEBUG_PIN1);
             _delay_ms(500);
         }
+        #endif
     }
 }

@@ -1,10 +1,10 @@
-P=darkroom-timer
+P=darkroomtimer
 P_SIM=dtSIM
 P_FLASH=BURN
-P_DEBUG=timer-debug
+P_DEBUG=timerdebug
 P_FLASH_DEBUG=BURN_DEBUG
 MOCKFLAG=-DMOCK=0xA5
-DEBUG_FLAG=-DDEBUG
+DEBUG_FLAG=-D'DEBUG_FLAG'
 TARGET_MCU=atmega328p
 TARGET_PROGRAMMER=usbasp-clone
 OBJECTS=src/main.o \
@@ -25,7 +25,7 @@ $(P_SIM): $(OBJECTS)
     $(OBJECTS)
 
 $(P_DEBUG): $(OBJECTS)
-	$(CC) $(DFLAGS) $(CFLAGS) $(DEBUG_FLAG) $(LDLIBS) -o build/$(P_DEBUG) \
+	$(CC) $(DEBUG_FLAG) $(DFLAGS) $(CFLAGS) $(LDLIBS) -o build/$(P_DEBUG) \
     $(OBJECTS)
 
 $(P_FLASH):
