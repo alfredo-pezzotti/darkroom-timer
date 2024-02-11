@@ -51,8 +51,8 @@ void main(void)
         #ifdef DEBUG_FLAG
         else
         {
-            PORTB ^= (OUT_HIGH << DEBUG_PIN1);
-            _delay_ms(500);
+            //PORTB ^= (OUT_HIGH << DEBUG_PIN1);
+            //_delay_ms(500);
         }
         #endif
     }

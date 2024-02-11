@@ -15,6 +15,10 @@
 void HAL_SR_transmitDataToShiftRegisters(const uint8_t* txData,
                                          int16_t        txDataLen)
 {
+    #ifdef DEBUG_FLAG
+        #include <avr/io.h>
+        PORTB ^= (OUT_HIGH << DEBUG_PIN1);
+    #endif
     for (int16_t digit = 0; digit < txDataLen; digit++)
     {
         for (int8_t i = MSb; i >= 0; i--)
