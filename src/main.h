@@ -65,8 +65,6 @@
     #define SHR_PORT            PORTC
 #endif
 
-#define DEBUG_FLAG
-
 #ifdef DEBUG_FLAG
     #define DEBUG_PIN1              PB_LED_MODE
     #define DEBUG_PIN2              PD_OUT_RELAY

@@ -1,31 +1,42 @@
 P=darkroomtimer
+P_O=darkroomtimer_o
 P_SIM=dtSIM
 P_FLASH=BURN
 P_DEBUG=timerdebug
+P_DEBUG_O=timerdebug_o
 P_FLASH_DEBUG=BURN_DEBUG
 MOCKFLAG=-DMOCK=0xA5
-DEBUG_FLAG=-D'DEBUG_FLAG'
+#DEBUG_FLAG= -DDEBUG_FLAG
 TARGET_MCU=atmega328p
 TARGET_PROGRAMMER=usbasp-clone
+SOURCES=src/main.c \
+        src/hal/HAL_mcuSetup.c src/hal/HAL_ShiftReg.c\
+        src/application/AL_TimeSet.c \
+        src/util/buttons.c src/util/7seg.c
 OBJECTS=src/main.o \
         src/hal/HAL_mcuSetup.o src/hal/HAL_ShiftReg.o\
         src/application/AL_TimeSet.o \
         src/util/buttons.o src/util/7seg.o
-DFLAGS= -gdwarf-2 -g3
-CFLAGS= -DF_CPU=20000001UL -Os -mmcu=$(TARGET_MCU)
+DFLAGS= -gdwarf-2 -g3 -DDEBUG_FLAG
+CFLAGS= -DF_CPU=20000000UL -Os -mmcu=$(TARGET_MCU)
 MAPFILE= -Xlinker -Map=build/$(P).map
 LDLIBS=
 CC=avr-gcc
 
-$(P): $(OBJECTS)
-	$(CC) $(CFLAGS) $(LDLIBS) $(MAPFILE) -o build/$(P) $(OBJECTS)
+$(P): $(P_O)
+	$(CC) $(LDLIBS) $(MAPFILE) -o build/$(P) $(OBJECTS)
+
+$(P_O): $(SOURCES)
+	$(CC) $(CFLAGS) -c $(SOURCES)
+
+$(P_DEBUG): $(OBJECTS) $(P_DEBUG_O)
+	$(CC) $(LDLIBS) -o build/$(P_DEBUG) $(OBJECTS)
+
+$(P_DEBUG_O): $(SOURCES)
+	$(CC) $(DFLAGS) $(CFLAGS) -c $(DEBUG_FLAG) $(SOURCES)
 
 $(P_SIM): $(OBJECTS)
 	$(CC) $(DFLAGS) $(CFLAGS) $(MOCKFLAG) $(LDLIBS) -o build/$(P_SIM) \
-    $(OBJECTS)
-
-$(P_DEBUG): $(OBJECTS)
-	$(CC) $(DEBUG_FLAG) $(DFLAGS) $(CFLAGS) $(LDLIBS) -o build/$(P_DEBUG) \
     $(OBJECTS)
 
 $(P_FLASH):
