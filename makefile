@@ -17,13 +17,13 @@ OBJECTS=src/main.o \
         src/hal/HAL_mcuSetup.o src/hal/HAL_ShiftReg.o\
         src/application/AL_TimeSet.o \
         src/util/buttons.o src/util/7seg.o
-DFLAGS= -gdwarf-2 -g3 -DDEBUG_FLAG
+DFLAGS= -gdwarf-2 -g3 -DDEBUG_FLAG -DF_CPU=20000000UL -O0 -mmcu=$(TARGET_MCU)
 CFLAGS= -DF_CPU=20000000UL -Os -mmcu=$(TARGET_MCU)
 MAPFILE= -Xlinker -Map=build/$(P).map
 LDLIBS=
 CC=avr-gcc
 
-$(P): $(P_O)
+$(P): $(OBJECTS) $(P_O)
 	$(CC) $(LDLIBS) $(MAPFILE) -o build/$(P) $(OBJECTS)
 
 $(P_O): $(SOURCES)
@@ -33,7 +33,7 @@ $(P_DEBUG): $(OBJECTS) $(P_DEBUG_O)
 	$(CC) $(LDLIBS) -o build/$(P_DEBUG) $(OBJECTS)
 
 $(P_DEBUG_O): $(SOURCES)
-	$(CC) $(DFLAGS) $(CFLAGS) -c $(DEBUG_FLAG) $(SOURCES)
+	$(CC) $(DFLAGS) -c $(DEBUG_FLAG) $(SOURCES)
 
 $(P_SIM): $(OBJECTS)
 	$(CC) $(DFLAGS) $(CFLAGS) $(MOCKFLAG) $(LDLIBS) -o build/$(P_SIM) \
